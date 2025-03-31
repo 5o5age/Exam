@@ -20,19 +20,23 @@ class Film {
 
     @Override
     public String toString() {
-        return name + ", " + year + ", " + director + ", " + (available ? "Available" : "Taken by " + borrowedBy + " until " + returnDate);
+        String padding = "     ";
+        return String.format( name + padding + " | " + year + padding  + " | " + director + padding +  " | " + (available ? "Available" : "Taken by " + borrowedBy + " until " + returnDate));
     }
 }
 
 public class FilmRentalConsole {
-    private static final String FILE_NAME = "films.csv";
     private static final List<Film> films = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         loadFilms();
-        System.out.println("Welcome to the 1980s Film Rental Console!");
-        
+        System.out.println("Welcome to the Film Rental Console    MO");
+        System.out.println("                                      VO");
+        System.out.println("help   - Show available commands      RA");
+
+
+       
         while (true) {
             System.out.print("> ");
             String command = scanner.nextLine().trim().toLowerCase();
@@ -74,15 +78,18 @@ public class FilmRentalConsole {
 
     private static void showHelp() {
         System.out.println("Available commands:");
-        System.out.println("  show - Show all films");
-        System.out.println("  exit - Exit the program and save data");
-        System.out.println("  help - Show this help message");
+        System.out.println("  show   - Show all films");
+        System.out.println("  help   - Show this help message");
+        System.out.println("  add    - Add film to the catalogue");
+        System.out.println("  rent   - Rent out existing film");
+        System.out.println("  return - Return rented out film");
+        System.out.println("  exit   - Exit the program and save data");
     }
 
     private static void loadFilms() {
         File file = new File("src\\test.csv");
         if (!file.exists()) return;
-        
+       
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -114,40 +121,66 @@ public class FilmRentalConsole {
     }
 
 
-    private static void addFilm() {
+
+    private static void addFilm() { //Adds film
+
         System.out.print("Enter film name: ");
         String name = scanner.nextLine().trim();
+
         System.out.print("Enter release year: ");
         int year = Integer.parseInt(scanner.nextLine().trim());
+
         System.out.print("Enter director: ");
         String director = scanner.nextLine().trim();
-    
-        films.add(new Film(name, year, director, true, "", ""));
-        System.out.println("Film added successfully!");
+
+        System.out.println(name + ", " + year + ", " + director + "  -  is this correct? [y/n]"); //Asks to check if film data is correct
+        String answer = scanner.nextLine().trim();
+
+        if (answer.equals("y")) {
+            films.add(new Film(name, year, director, true, "", ""));
+            System.out.println("Film added succadessfully!");
+            return;
+        } else {
+            System.out.println("Film not added.");
+            return;
+        }
     }
-    
+   
     private static void rentFilm() {
+        System.out.println("Show all films? [y/n]");
+        String answer = scanner.nextLine().trim();
+        if (answer.equals("y")) {
+            showFilms();
+        }
+
         System.out.print("Enter film name to rent: ");
         String name = scanner.nextLine().trim();
-        
+       
         for (Film film : films) {
             if (film.name.equalsIgnoreCase(name) && film.available) {
-                System.out.print("Enter your name: ");
+                System.out.print("Enter client's name: ");
                 film.borrowedBy = scanner.nextLine().trim();
                 System.out.print("Enter return date (YYYY-MM-DD): ");
                 film.returnDate = scanner.nextLine().trim();
                 film.available = false;
-                System.out.println("You have successfully rented: " + film.name);
+                System.out.println(film.name + "has been successfully rented");
                 return;
             }
         }
         System.out.println("Film not available or does not exist.");
     }
-    
+   
     private static void returnFilm() {
+        System.out.println("Show all films? [y/n]");
+        String answer = scanner.nextLine().trim();
+        if (answer.equals("y")) {
+            showFilms();
+        }
+
+
         System.out.print("Enter film name to return: ");
         String name = scanner.nextLine().trim();
-        
+       
         for (Film film : films) {
             if (film.name.equalsIgnoreCase(name) && !film.available) {
                 film.available = true;
@@ -159,4 +192,9 @@ public class FilmRentalConsole {
         }
         System.out.println("Film not found or already available.");
     }
+
+    private static void sortDirector() {
+        //Add sorting
+
+    };
 }
