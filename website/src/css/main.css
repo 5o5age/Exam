@@ -5,7 +5,6 @@
 }
 header {
     background-color: #2B2929;
-    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -95,14 +94,14 @@ body {
 }
 
 .about-page {
-    padding-top: 300px;
     padding-bottom: 300px;
     background-image: linear-gradient(to right, #270101, #010520);
+
 
 }
 .card-container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     color: white;
     margin-left: 17%;
@@ -114,10 +113,15 @@ body {
     flex-direction: row;
     padding: 0px;
     max-width: 30%;
+    min-width: 20em;
+    margin-top: 3em;
+    margin-bottom: 3em;
     border: #292929;
     border-style: none;
     border-radius: 5px;
     background-color: #292929;
+
+
 }
 .card-content>div>div>img {
     max-height: 200px;
@@ -131,10 +135,6 @@ body {
 .card-colors {
     display: flex;
     flex-direction: column;
-    border: #292929;
-    border-style: none;
-    border-radius: 5px;
-    background-color: #292929;
 }
 .card-colors>div {
     width: 30px;
