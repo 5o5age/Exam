@@ -20,8 +20,7 @@ class Film {
 
     @Override
     public String toString() {
-        String padding = "     ";
-        return String.format( name + padding + " | " + year + padding  + " | " + director + padding +  " | " + (available ? "Available" : "Taken by " + borrowedBy + " until " + returnDate));
+        return String.format("%-30s | %-4d | %-25s | %-30s", name, year, director, (available ? "Available" : "Taken by " + borrowedBy + " until " + returnDate));
     }
 }
 
@@ -74,6 +73,10 @@ public class FilmRentalConsole {
                 System.out.println(film);
             }
         }
+    }
+
+    private static String overlay() { // TODO: add overlay to places it matters, make it red.
+        return("Available commands: |  show  |  help  |  add  |  rent  |  return  |  exit  |");
     }
 
     private static void showHelp() {
@@ -138,7 +141,7 @@ public class FilmRentalConsole {
 
         if (answer.equals("y")) {
             films.add(new Film(name, year, director, true, "", ""));
-            System.out.println("Film added succadessfully!");
+            System.out.println("Film added successfully!");
             return;
         } else {
             System.out.println("Film not added.");
@@ -163,7 +166,7 @@ public class FilmRentalConsole {
                 System.out.print("Enter return date (YYYY-MM-DD): ");
                 film.returnDate = scanner.nextLine().trim();
                 film.available = false;
-                System.out.println(film.name + "has been successfully rented");
+                System.out.println(film.name + " has been successfully rented");
                 return;
             }
         }

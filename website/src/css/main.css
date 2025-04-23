@@ -12,17 +12,16 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0px 140px 0px 0px;
-    height: 50px;
+    margin: 0em 13em 0em 0em;
     height: 100%;
 }
 nav {
     display: flex;
-    gap: 130px;
+    gap: 10em;
 }
 nav>div>a {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1em;
     text-decoration: none;
     color: white;
     column-count: 5;
@@ -32,6 +31,9 @@ nav>div>a:hover {
 }
 nav>div>a:active {
     color: #8c2e91;
+}
+.dropdown {
+    display: none;
 }
 .logo {
     width: auto;
@@ -43,13 +45,13 @@ nav>div>a:active {
 }
 .colors>div {
     width: 20%;
-    height: 20px;
+    height: 1.4em;
 }
 .logo-img {
-    width: 40px;
+    width: 3em;
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    padding-left: 1em;
 }
 body {
     background-color: rgb(0, 0, 0);
@@ -63,7 +65,7 @@ body {
     opacity: 50%;
 }
 .hero-text {
-    font-size: 40px;
+    font-size: 2.5em;
     position: absolute;
     top: 20%;
     left: 20%;
@@ -74,17 +76,17 @@ body {
     text-align: left;
 }
 .hero-text>h2 {
-    font-size: 25px;
+    font-size: 0.5em;
     font-weight: lighter;
 }
 .hero-text>button{
-    margin-top: 30px;
-    padding: 15px 30px;
-    font-size: 16px;
+    margin-top: 2em;
+    padding: 1em 2em;
+    font-size: 0.4em;
     color: white;
     background-color: #7D1236;  
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3em;
 }
 .hero-text>button:hover {
     background-color: #8E2A48;
@@ -93,15 +95,13 @@ body {
     background-color: #640b29;  
 }
 .about-page {
-    padding-bottom: 300px;
+    padding-bottom: 13em;
     background-image: linear-gradient(to right, #270101, #010520);
-
-
 }
 .card-content {
     display: flex;
     flex-direction: row;
-    padding: 0px;
+    padding: 0em;
     max-width: 30%;
     min-width: 20em;
     margin-top: 3em;
@@ -116,6 +116,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     color: white;
+    padding-top: 10%;
     margin-left: 17%;
     margin-right: 17%;
     max-width: 100%;
@@ -173,7 +174,7 @@ body {
     padding: 0.75rem 2rem;
     text-decoration: none;
     font-size: 1rem;
-    border-radius: 6px;
+    border-radius: 0.5em;
     transition: background 0.3s ease;
     width: 100%;
     max-width: 300px;
@@ -225,6 +226,20 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+@media (max-width: 1455px) {
+    .card-container {
+        justify-content: center;
+    }
+
+    .card-container > .card-content:last-child {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-container > .card-content:first-child {
+        margin-right: 10%;
+    }
+
+}
 @media (max-width: 768px) {
     .download-section {
       min-width: 100%;
@@ -235,17 +250,94 @@ body {
       flex-direction: column;
       align-items: center;
     }
+    .card-container > .card-content:first-child {
+        margin-right: 0px;
+    }
   }
 
-@media (max-width: 1472px) { /* Make last card in the middle */
-    .last-child {
-        justify-content: center;
+@media (max-width: 970px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .card-content {
+        max-width: 50%;
+        width: 100%;
+    }
+    .card-container > .card-content:first-child {
+        margin-right: 0px;
     }
 }
 
-@media (max-width: 987px) { /* Make all cards centered */
-    .card-container {
-        margin: 0;
-        margin-left: 35%;
+@media (max-width: 1270px) {
+
+    .hero-text {
+        left: 50%;
+        top: 50%;
+        max-height: 100%;
+        width: 90%;
+        padding-bottom: 2em;
+        font-size: 2em;
+    }
+    .hero-text>button {
+        position: absolute;
+        left: 40%;
+    }
+    .dropdown {
+        display: block;
+    }
+    .standart-nav {
+        display: none;
+    }
+
+
+
+    /*-----------------------*/
+    .dropdown {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
+    
+    .dropbtn {
+        padding: 15px 30px;
+        font-size: 16px;
+        color: white;
+        background-color: #7D1236;  
+        border: none;
+        border-radius: 5px;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%; 
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #2B2929;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        border: none;
+        border-radius: 0.5em;
+        text-align: center;
+    }
+    
+    .dropdown-content a {
+        color: rgb(255, 255, 255);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-content a:hover {
+        background-color:#222020;;
+    }
+    
+    .dropdown-content.show {
+        display: block;
     }
 }

@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movora</title>
     <link rel="stylesheet" href="src/css/main.css">
 </head>
+
 <body>
     <header>
         <div class="navigation-container">
             <div>
-                <img src="src/images/logo-clear.png" alt="logo"  class="logo">
+                <img src="src/images/logo-clear.png" alt="logo" class="logo">
             </div>
             <nav>
-                <div><a href="#main">Main</a></div>
-                <div><a href="#about">About</a></div>
-                <div><a href="#howtouse">How to use</a></div>
-                <div><a href="#contacts">Contacts</a></div>
-                <div><a href="#download" class="download-button">Download</a></div>
+                <div class="standart-nav"><a href="#main">Main</a></div>
+                <div class="standart-nav"><a href="#about">About</a></div>
+                <div class="standart-nav"><a href=" #howtouse">How to use</a></div>
+                <div class="standart-nav"><a href="#contacts">Contacts</a></div>
+                <div class="standart-nav"><a href="#download" class="download-button">Download</a></div>
+
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Menu</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#main">Main</a>
+                        <a href="#about">About</a>
+                        <a href="#howtouse">How to use</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#download" class="download-button">Download</a>
+                    </div>
+                </div>
             </nav>
         </div>
         <div class="colors">
@@ -30,79 +43,92 @@
     </header>
     <div id="main" class="hero-container">
         <div>
-            <img src="src/images/posterGradient.jpg" alt="cloud"> 
+            <img src="src/images/posterGradient.jpg" alt="cloud">
         </div>
         <div class="hero-text">
             <h1>Movora</h1>
-            <h2>Best soft-ware for quick and easy movie sorting and accounting for all kinds of rental businesses. </h2>
+            <h2>Best soft-ware for quick and easy movie sorting and accounting <br> for all kinds of rental businesses.
+            </h2>
             <button onclick="location.href='#text'">See more</button>
         </div>
     </div>
+    <div class="bar" style="background-color: black; width: 100%; margin-bottom: 1.8em;"></div>
     <div id="about" class="about-page">
-        <div class="bar" style="background-color: black; width: 100%; height: 2em; margin-bottom: 10%;">p</div>
         <div class="card-container">
             <div class="card-content">
                 <div class="card-colors">
-                    <div class="color-5" style="background-color: #984033; border: #984033; border-radius: 5px 0px 0px 0px;"></div>
+                    <div class="color-5"
+                        style="background-color: #984033; border: #984033; border-radius: 5px 0px 0px 0px;"></div>
                     <div class="color-3" style="background-color: #7D1236;"></div>
-                    <div class="color-1" style="background-color: #4A124E; border: #4A124E; border-radius: 0px 0px 0px 5px;"></div>
+                    <div class="color-1"
+                        style="background-color: #4A124E; border: #4A124E; border-radius: 0px 0px 0px 5px;"></div>
                 </div>
                 <div class="card-info">
                     <div><img class="pictogram" src="src/images/logo-clear.png" alt="pictogram"></div>
                     <div>
                         <h2>Lorem</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque officiis cum nesciunt. Necessitatibus inventore, sed esse porro similique, quaerat sint voluptatem eius debitis, iusto cupiditate minima quibusdam nisi recusandae fugit!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque officiis cum nesciunt.
+                            Necessitatibus inventore, sed esse porro similique, quaerat sint voluptatem eius debitis,
+                            iusto cupiditate minima quibusdam nisi recusandae fugit!</p>
                     </div>
                     <div><img class="poster" src="src/images/poster.jpg" alt="example"></div>
                 </div>
             </div>
             <div class="card-content">
                 <div class="card-colors">
-                    <div class="color-5" style="background-color: #984033; border: #984033; border-radius: 5px 0px 0px 0px;"></div>
+                    <div class="color-5"
+                        style="background-color: #984033; border: #984033; border-radius: 5px 0px 0px 0px;"></div>
                     <div class="color-3" style="background-color: #7D1236;"></div>
-                    <div class="color-1" style="background-color: #4A124E; border: #4A124E; border-radius: 0px 0px 0px 5px;"></div>
+                    <div class="color-1"
+                        style="background-color: #4A124E; border: #4A124E; border-radius: 0px 0px 0px 5px;"></div>
                 </div>
                 <div class="card-info">
                     <div><img src="src/images/logo-clear.png" alt="pictogram"></div>
                     <div>
                         <h2>Lorem</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque officiis cum nesciunt. Necessitatibus inventore, sed esse porro similique, quaerat sint voluptatem eius debitis, iusto cupiditate minima quibusdam nisi recusandae fugit!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque officiis cum nesciunt.
+                            Necessitatibus inventore, sed esse porro similique, quaerat sint voluptatem eius debitis,
+                            iusto cupiditate minima quibusdam nisi recusandae fugit!</p>
                     </div>
                     <div><img src="src/images/poster.jpg" alt="example"></div>
                 </div>
             </div>
             <div class="card-content last-card">
                 <div class="card-colors">
-                    <div class="color-5" style="background-color: #984033; border: #984033; border-radius: 5px 0px 0px 0px;"></div>
+                    <div class="color-5"
+                        style="background-color: #984033; border: #984033; border-radius: 5px 0px 0px 0px;"></div>
                     <div class="color-3" style="background-color: #7D1236;"></div>
-                    <div class="color-1" style="background-color: #4A124E; border: #4A124E; border-radius: 0px 0px 0px 5px;"></div>
+                    <div class="color-1"
+                        style="background-color: #4A124E; border: #4A124E; border-radius: 0px 0px 0px 5px;"></div>
                 </div>
                 <div class="card-info">
                     <div><img src="src/images/logo-clear.png" alt="pictogram"></div>
                     <div>
                         <h2>Lorem</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque officiis cum nesciunt. Necessitatibus inventore, sed esse porro similique, quaerat sint voluptatem eius debitis, iusto cupiditate minima quibusdam nisi recusandae fugit!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque officiis cum nesciunt.
+                            Necessitatibus inventore, sed esse porro similique, quaerat sint voluptatem eius debitis,
+                            iusto cupiditate minima quibusdam nisi recusandae fugit!</p>
                     </div>
                     <div><img src="src/images/poster.jpg" alt="example"></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bar" style="background-color: black; width: 100%; height: 2em;"></div>
+    <div class="bar" style="background-color: black; width: 100%; margin-bottom: 1.8em;"></div>
     <div class="download-section">
         <div class="download-content">
-          <p class="download-text">Get the latest version of our software below:</p>
-          <div class="button-group">
-            <a href="#" class="btn primary">Download</a>
-            <a href="#" class="btn secondary small">Download Manual</a>
-          </div>
-          <div class="photo-row">
-            <img src="src/images/Background.jpg" alt="Screenshot 1">
-            <img src="src/images/Background.jpg" alt="Screenshot 2">
-            <img src="src/images/Background.jpg" alt="Screenshot 3">
-          </div>
+            <p class="download-text">Get the latest version of our software below:</p>
+            <div class="button-group">
+                <a href="#" class="btn primary">Download</a>
+                <a href="#" class="btn secondary small">Download Manual</a>
+            </div>
+            <div class="photo-row">
+                <img src="src/images/Background.jpg" alt="Screenshot 1">
+                <img src="src/images/Background.jpg" alt="Screenshot 2">
+                <img src="src/images/Background.jpg" alt="Screenshot 3">
+            </div>
         </div>
-      </div>
+    </div>
     <div id="howtouse" class="howToUse-page">
         <!--TODO: How to use-->
     </div>
@@ -110,6 +136,27 @@
         <p>&copy; 2025 Nils Terentjevs. All rights reserved.</p>
     </footer>
 </body>
+<script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
 
 
 <!--
@@ -120,4 +167,5 @@
        `/_/====/_/-'\_\
         ""     ""    "" 
 -->
+
 </html>
