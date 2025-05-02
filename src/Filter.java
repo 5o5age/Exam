@@ -2,11 +2,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Filter {
-    public static final Scanner scanner = new Scanner(System.in);
     public static void filter() {
         while (true) {
             System.out.println(" [1] filteryear          - Filters films by year and saves to temporary.csv");
@@ -15,7 +13,7 @@ public class Filter {
 
             System.out.print("> ");
 
-            String command = scanner.nextLine().trim().toLowerCase();
+            String command = run.scanner.nextLine().trim().toLowerCase();
             switch (command) {
                 case "return":
                 case "0":
@@ -42,13 +40,13 @@ public class Filter {
         System.out.print("Enter the year to filter by: ");
         int targetYear;
         try {
-            targetYear = Integer.parseInt(scanner.nextLine().trim());
+            targetYear = Integer.parseInt(run.scanner.nextLine().trim());
         } catch (NumberFormatException e) {
             System.out.println("Invalid year input.");
             return;
         }
 
-        List<Film> filtered = Functionality.films.stream().filter(f -> f.year == targetYear).collect(Collectors.toList());
+        List<Film> filtered = run.films.stream().filter(f -> f.year == targetYear).collect(Collectors.toList());
 
         if (filtered.isEmpty()) {
             System.out.println("No films found for the year " + targetYear + ".");
@@ -76,7 +74,7 @@ public class Filter {
 
     private static void filterByAvailability() {
         System.out.print("Filter available or rented films? (available/rented): ");
-        String input = scanner.nextLine().trim().toLowerCase();
+        String input = run.scanner.nextLine().trim().toLowerCase();
     
         boolean filterAvailable;
         if (input.equals("available")) {
@@ -88,7 +86,7 @@ public class Filter {
             return;
         }
     
-        List<Film> filtered = Functionality.films.stream().filter(f -> f.available == filterAvailable).collect(Collectors.toList());
+        List<Film> filtered = run.films.stream().filter(f -> f.available == filterAvailable).collect(Collectors.toList());
     
         if (filtered.isEmpty()) {
             System.out.println("No films found matching that availability.");

@@ -1,8 +1,6 @@
-import java.util.Scanner;
 
 
 public class Count {
-    public static final Scanner scanner = new Scanner(System.in);
     public static void count() {
         while (true) {
             System.out.print("> ");
@@ -16,7 +14,7 @@ public class Count {
 
             System.out.print("> ");
 
-            String command = scanner.nextLine().trim().toLowerCase();
+            String command = run.scanner.nextLine().trim().toLowerCase();
             switch (command) {
                 case "return":
                 case "0":
@@ -46,18 +44,18 @@ public class Count {
     }
 
     private static void countRented() {
-        long rented = Functionality.films.stream()
+        long rented = run.films.stream()
             .filter(f -> !f.available)
             .count();
         System.out.println("Currently rented films: " + rented + "\n");
     }
     private static void countAll() {
-        long all = Functionality.films.stream()
+        long all = run.films.stream()
             .count();
         System.out.println("Currently listed films: " + all + "\n");
     }
     private static void countAvailable() {
-        long available = Functionality.films.stream()
+        long available = run.films.stream()
             .filter(f -> f.available)
             .count();
         System.out.println("Currently available films: " + available + "\n");

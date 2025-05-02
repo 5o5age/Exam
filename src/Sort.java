@@ -1,8 +1,6 @@
 import java.util.Comparator;
-import java.util.Scanner;
 
 public class Sort {
-    public static final Scanner scanner = new Scanner(System.in);
     public static void sort() {
         while (true) {
             System.out.println(" [1]  sortfilmaz           - Sorts list by film's name A-Z order");
@@ -19,7 +17,7 @@ public class Sort {
 
             System.out.print("> ");
 
-            String command = scanner.nextLine().trim().toLowerCase();
+            String command = run.scanner.nextLine().trim().toLowerCase();
             switch (command) {
                 case "return":
                 case "0":
@@ -66,51 +64,51 @@ public class Sort {
     }
 
     public static void sortFilmAZ() {
-        Functionality.films.sort(Comparator.comparing(film -> film.name.toLowerCase()));
+        run.films.sort(Comparator.comparing(film -> film.name.toLowerCase()));
         System.out.println("Films sorted by film name A-Z:");
-        Functionality.showFilms();
+        Deals.showFilms();
         System.out.println();
      }
     public static void sortFilmZA() {
-        Functionality.films.sort(Comparator.comparing((Film film) -> film.name.toLowerCase()).reversed());
+        run.films.sort(Comparator.comparing((Film film) -> film.name.toLowerCase()).reversed());
         System.out.println("Films sorted by film name Z-A:");
-        Functionality.showFilms();
+        Deals.showFilms();
         System.out.println();
         }
     public static void sortDirectorAZ() {
-        Functionality.films.sort(Comparator.comparing(film -> film.director.toLowerCase()));
+        run.films.sort(Comparator.comparing(film -> film.director.toLowerCase()));
         System.out.println("Films sorted by director name A-Z:");
-        Functionality.showFilms();
+        Deals.showFilms();
         System.out.println();
         }
     public static void sortDirectorZA() {
-        Functionality.films.sort(Comparator.comparing((Film film) -> film.director.toLowerCase()).reversed());
+        run.films.sort(Comparator.comparing((Film film) -> film.director.toLowerCase()).reversed());
         System.out.println("Films sorted by director name Z-A:");
-        Functionality.showFilms();
+        Deals.showFilms();
         System.out.println();
         }
     public static void sortYearAsc() {
-        Functionality.films.sort(Comparator.comparingInt(film -> film.year));
+        run.films.sort(Comparator.comparingInt(film -> film.year));
         System.out.println("Films sorted by year (oldest to newest):");
-        Functionality.showFilms();
+        Deals.showFilms();
         System.out.println();
         }
     public static void sortYearDesc() {
-        Functionality.films.sort(Comparator.comparingInt((Film film) -> film.year).reversed());
+        run.films.sort(Comparator.comparingInt((Film film) -> film.year).reversed());
         System.out.println("Films sorted by year (newest to oldest):");
-        Functionality.showFilms();
+        Deals.showFilms();
         System.out.println();
         }
     public static void sortAvailable() {
-        Functionality.films.sort(Comparator.comparing(film -> !film.available)); 
+        run.films.sort(Comparator.comparing(film -> !film.available)); 
         System.out.println("Films sorted by available first");
-        Functionality.showFilms();
+        Deals.showFilms();
         System.out.println();
         }
     public static void sortRented() {
-        Functionality.films.sort(Comparator.comparing(film -> film.available));
+        run.films.sort(Comparator.comparing(film -> film.available));
         System.out.println("Films sorted by rented first");
-        Functionality.showFilms();
+        Deals.showFilms();
         System.out.println();
         }
 }
