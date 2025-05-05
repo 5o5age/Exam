@@ -1,5 +1,7 @@
+package work;
 
 public class Film {
+
     String name;
     int year;
     String director;
@@ -18,7 +20,6 @@ public class Film {
 
     @Override
     public String toString() {
-        return String.format("%-30s | %-4d | %-25s | %-30s", name, year, director, (available ? "Available" : "Taken by " + borrowedBy + " until " + returnDate));
+        return String.format("%-45s | %-4d | %-35s | %-30s", name, year, director, (available ? "Available" : "Taken by " + borrowedBy + " until " + returnDate));
     }
 }
-

@@ -1,3 +1,5 @@
+package work;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -5,20 +7,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Filter {
+
     public static void filter() {
         while (true) {
+            System.out.println();
             System.out.println(" [1] filteryear          - Filters films by year and saves to temporary.csv");
             System.out.println(" [2] filteravail         - Filters films by availability and saves to temporary.csv");
             System.out.println(" [0] return              -  Return to main\n");
 
             System.out.print("> ");
 
-            String command = run.scanner.nextLine().trim().toLowerCase();
+            String command = Run.scanner.nextLine().trim().toLowerCase();
             switch (command) {
                 case "return":
                 case "0":
                     System.out.println("Returning...\n");
-                    
+
                     System.out.println("Welcome to the Film Rental Console    MO");
                     System.out.println("                                      VO");
                     System.out.println("help   - Show available commands      RA");
@@ -35,33 +39,32 @@ public class Filter {
         }
     }
 
-
-    private static void filterByYear() {
+    public static void filterByYear() {
         System.out.print("Enter the year to filter by: ");
         int targetYear;
         try {
-            targetYear = Integer.parseInt(run.scanner.nextLine().trim());
+            targetYear = Integer.parseInt(Run.scanner.nextLine().trim());
         } catch (NumberFormatException e) {
             System.out.println("Invalid year input.");
             return;
         }
 
-        List<Film> filtered = run.films.stream().filter(f -> f.year == targetYear).collect(Collectors.toList());
+        List<Film> filtered = Run.films.stream().filter(f -> f.year == targetYear).collect(Collectors.toList());
 
         if (filtered.isEmpty()) {
             System.out.println("No films found for the year " + targetYear + ".");
             return;
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\data\\temporary.csv"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("data\\temporary.csv"))) {
             for (Film film : filtered) {
-                writer.write(String.join(",", 
-                film.name,
-                String.valueOf(film.year),
-                film.director,
-                String.valueOf(film.available),
-                film.borrowedBy,
-                film.returnDate));
+                writer.write(String.join(",",
+                        film.name,
+                        String.valueOf(film.year),
+                        film.director,
+                        String.valueOf(film.available),
+                        film.borrowedBy,
+                        film.returnDate));
                 writer.newLine();
             }
             System.out.println("Filtered films saved to temporary.csv:");
@@ -71,11 +74,10 @@ public class Filter {
         }
     }
 
-
-    private static void filterByAvailability() {
+    public static void filterByAvailability() {
         System.out.print("Filter available or rented films? (available/rented): ");
-        String input = run.scanner.nextLine().trim().toLowerCase();
-    
+        String input = Run.scanner.nextLine().trim().toLowerCase();
+
         boolean filterAvailable;
         if (input.equals("available")) {
             filterAvailable = true;
@@ -85,28 +87,66 @@ public class Filter {
             System.out.println("Invalid input. Type 'available' or 'rented'.");
             return;
         }
+
+        List<Film> filtered = Run.films.stream().filter(f -> f.available == filterAvailable).collect(Collectors.toList());
+
+        if (filtered.isEmpty()) {
+            System.out.println("No films found matching that availability.");
+            return;
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("data\\temporary.csv"))) {
+            for (Film film : filtered) {
+                writer.write(String.join(",",
+                        film.name,
+                        String.valueOf(film.year),
+                        film.director,
+                        String.valueOf(film.available),
+                        film.borrowedBy,
+                        film.returnDate));
+
+                writer.newLine();
+            }
+            System.out.println();
+
+            filtered.forEach(System.out::println);
+            System.out.println();
+        } catch (IOException e) {
+            System.out.println("Error saving temporary file: " + e.getMessage());
+        }
+    }
+
+
+    public static void showAvailableFilms() {
+        filterAndDisplayFilms(true);
+    }
     
-        List<Film> filtered = run.films.stream().filter(f -> f.available == filterAvailable).collect(Collectors.toList());
+    public static void showRentedFilms() {
+        filterAndDisplayFilms(false);
+    }
+    
+    public static void filterAndDisplayFilms(boolean filterAvailable) {
+        List<Film> filtered = Run.films.stream()
+            .filter(f -> f.available == filterAvailable)
+            .collect(Collectors.toList());
     
         if (filtered.isEmpty()) {
             System.out.println("No films found matching that availability.");
             return;
         }
     
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\data\\temporary.csv"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("data\\temporary.csv"))) {
             for (Film film : filtered) {
-                writer.write(String.join(",", 
-                film.name,
-                String.valueOf(film.year),
-                film.director,
-                String.valueOf(film.available),
-                film.borrowedBy,
-                film.returnDate));
-
+                writer.write(String.join(",",
+                        film.name,
+                        String.valueOf(film.year),
+                        film.director,
+                        String.valueOf(film.available),
+                        film.borrowedBy,
+                        film.returnDate));
                 writer.newLine();
             }
-            System.out.println("Filtered films saved to temporary.csv:\n");
-    
+            System.out.println();
             filtered.forEach(System.out::println);
             System.out.println();
         } catch (IOException e) {

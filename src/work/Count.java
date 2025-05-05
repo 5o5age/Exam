@@ -1,8 +1,9 @@
-
+package work;
 
 public class Count {
     public static void count() {
         while (true) {
+            System.out.println();
             System.out.print("> ");
             System.out.println("Choose count type:");
             System.out.println("[1] countall        -  Count every film");
@@ -10,54 +11,55 @@ public class Count {
             System.out.println("[3] countrented     -  Counts rented film");
             System.out.println("[0] return          -  Return to main\n");
 
-
-
             System.out.print("> ");
 
-            String command = run.scanner.nextLine().trim().toLowerCase();
+            String command = Run.scanner.nextLine().trim().toLowerCase();
             switch (command) {
                 case "return":
                 case "0":
                     System.out.println("Returning...\n");
-                    
+
                     System.out.println("Welcome to the Film Rental Console    MO");
                     System.out.println("                                      VO");
                     System.out.println("help   - Show available commands      RA");
                     return;
-                case "countrented":
+                case "countall":
                 case "1":
-                    countRented();
+                    countAll();
                     break;
                 case "countavailable":
                 case "2":
                     countAvailable();
                     break;
-                case "countall":
+                case "countrented":
                 case "3":
-                    countAll();
+                    countRented();
                     break;
                 default:
-                    System.out.println("Unknown command. Available commands: |  return  |  count all  |  countavailable  |  countrented  |");
-                }
+                    System.out.println(
+                            "Unknown command. Available commands: |  return  |  count all  |  countavailable  |  countrented  |");
+            }
         }
 
     }
 
-    private static void countRented() {
-        long rented = run.films.stream()
-            .filter(f -> !f.available)
-            .count();
+    public static void countRented() {
+        long rented = Run.films.stream()
+                .filter(f -> !f.available)
+                .count();
         System.out.println("Currently rented films: " + rented + "\n");
     }
-    private static void countAll() {
-        long all = run.films.stream()
-            .count();
+
+    public static void countAll() {
+        long all = Run.films.stream()
+                .count();
         System.out.println("Currently listed films: " + all + "\n");
     }
-    private static void countAvailable() {
-        long available = run.films.stream()
-            .filter(f -> f.available)
-            .count();
+
+    public static void countAvailable() {
+        long available = Run.films.stream()
+                .filter(f -> f.available)
+                .count();
         System.out.println("Currently available films: " + available + "\n");
     }
 }

@@ -1,20 +1,20 @@
+package work;
 import java.util.*;
 
-
-public class run {
-    public static final List<Film> films = new ArrayList<>();
-    public static final Scanner scanner = new Scanner(System.in);
+public class Run {
+    public static List<Film> films = new ArrayList<>();
+    public static Scanner scanner = new Scanner(System.in);
 
     public static void run() {
         Deals.loadFilms();
-        System.out.println("Welcome to the Film Rental Console    MO");
-        System.out.println("                                      VO");
-        System.out.println("help   - Show available commands      RA");
+        System.out.println();
+        System.out.println("Welcome to the Film Rental Console        MO");
+        System.out.println("                                          VO");
+        System.out.println("[1] help   - Show available commands      RA");
 
-
-       
         while (true) {
-            System.out.print("> ");
+            System.err.println();
+            System.out.print("> "); 
             String command = scanner.nextLine().trim().toLowerCase();
             switch (command) {
                 case "exit":
@@ -22,36 +22,40 @@ public class run {
                     Deals.saveFilms();
                     System.out.println("Exiting...");
                     return;
-                case "show":
-                case "1":
-                    Deals.showFilms();
-                    break;
                 case "help":
-                case "2":
+                case "1":
                     Deals.showHelp();
+                    break;
+                case "show":
+                case "2":
+                    Deals.showFilms();
                     break;
                 case "add":
                 case "3":
                     Deals.addFilm();
                     break;
-                case "rent":
+                case "delete":
                 case "4":
+                    Deals.deleteFilm();
+                    break;
+                case "rent":
+                case "5":
                     Deals.rentFilm();
                     break;
                 case "return":
-                case "5":
+                case "6":
                     Deals.returnFilm();
                     break;
                 case "sort":
-                case "6":
+                case "7":
                     Sort.sort();
                     break;
                 case "filter":
-                case "7":
+                case "8":
                     Filter.filter();
                     break;
                 case "count":
-                case "8":
+                case "9":
                     Count.count();
                     break;
                 default:
@@ -61,4 +65,3 @@ public class run {
     }
 
 }
-
